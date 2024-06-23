@@ -1,7 +1,11 @@
-// Attendance model (models/Attendance.js)
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 const AttendanceSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    date: { type: Date, default: Date.now },
+    date: { type: Date, required: true },
+    topic: { type: String, required: true },
+    status: { type: String, required: true, enum: ['present', 'absent'] }
 });
-module.exports = mongoose.model('Attendance', AttendanceSchema);
+
+const Attendance = mongoose.model('Attendance', AttendanceSchema);
+
+export default Attendance;

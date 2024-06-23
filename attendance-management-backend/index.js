@@ -3,7 +3,11 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors'
 import userRoutes from './routes/Users.js';
-import authRoutes from './routes/auth.js'
+import authRoutes from './routes/auth.js';
+import profileRoutes from './routes/profile.js';
+import attendanceRoutes from './routes/Attendance.js';
+
+
 
 dotenv.config();
 
@@ -13,6 +17,10 @@ app.use(cors())
 
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
+app.use('/api/profile', profileRoutes);
+app.use('/api/attendance', attendanceRoutes);
+
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
